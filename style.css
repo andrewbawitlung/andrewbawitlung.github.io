@@ -5,11 +5,11 @@ body, html {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #000;
+    background-color: #000; /* Fallback color */
     font-family: 'Inter', sans-serif;
 }
 
-/* Force video to cover the exact screen dimensions */
+/* LAYER 1: The Video */
 #bg-video {
     position: absolute;
     top: 0;
@@ -17,10 +17,10 @@ body, html {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -3;
+    z-index: 1; 
 }
 
-/* Aesthetic dark overlay */
+/* LAYER 2: The Dark Overlay */
 .overlay {
     position: absolute;
     top: 0;
@@ -28,28 +28,28 @@ body, html {
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.65);
-    z-index: -2;
+    z-index: 2; 
 }
 
-/* Canvas takes up full screen but doesn't block clicks */
+/* LAYER 3: The Mouse-Aware Particles */
 #particle-canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
-    pointer-events: none; 
+    z-index: 3; 
+    pointer-events: none; /* Allows mouse tracking without blocking clicks */
 }
 
-/* Perfectly center the text container */
+/* LAYER 4: Your Name */
 .content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 1;
+    z-index: 4; 
     width: 100%;
 }
 
@@ -57,11 +57,11 @@ body, html {
 h1 {
     color: #ffffff;
     font-size: 3.5rem;
-    font-weight: 200; /* Extremely light, clean weight */
-    letter-spacing: 8px; /* Wide spacing for modern aesthetic */
+    font-weight: 200; 
+    letter-spacing: 8px; 
     text-transform: uppercase;
     margin: 0;
-    white-space: nowrap; /* Prevents name from breaking into two lines on desktop */
+    white-space: nowrap; 
 }
 
 /* Mobile responsiveness */
@@ -69,6 +69,6 @@ h1 {
     h1 { 
         font-size: 1.8rem; 
         letter-spacing: 4px;
-        white-space: normal; /* Allows wrapping on very small screens */
+        white-space: normal; 
     }
 }
