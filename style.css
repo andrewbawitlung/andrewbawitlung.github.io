@@ -1,0 +1,62 @@
+/* Reset default margins */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow: hidden;
+    background-color: #111; /* Fallback color */
+}
+
+/* Make the video cover the entire screen */
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+/* Add a dark semi-transparent overlay for a monotone aesthetic */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Adjust the 0.6 to make it darker or lighter */
+    z-index: -1;
+}
+
+/* Center the text perfectly */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+/* Minimalist typography for your name */
+h1 {
+    color: #ffffff;
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Make it look good on mobile phones */
+@media (max-width: 768px) {
+    h1 { 
+        font-size: 2.2rem; 
+        letter-spacing: 3px;
+    }
+}
