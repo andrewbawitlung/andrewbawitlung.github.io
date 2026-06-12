@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particlesArray;
-let isDarkMode = false;
+let isDarkMode = true;
 
 // Dark Mode Toggle Logic
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
