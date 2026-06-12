@@ -85,7 +85,7 @@ body, html {
     display: inline-block;
     height: 24px;
     position: relative;
-    width: 64px;
+    width: 48px;
     margin-right: 12px;
     pointer-events: auto; /* Fix for clicking inside unclickable container */
 }
