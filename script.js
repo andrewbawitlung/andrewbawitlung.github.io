@@ -5,6 +5,25 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particlesArray;
+let isDarkMode = false;
+
+// Dark Mode Toggle Logic
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+toggleSwitch.addEventListener('change', function(e) {
+    isDarkMode = e.target.checked;
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+    
+    // Smoothly update existing particles
+    particlesArray.forEach(p => {
+        if (p.color !== '#FF9F43') {
+            p.color = isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.15)';
+        }
+    });
+});
 
 // Get mouse position
 let mouse = {
@@ -103,8 +122,9 @@ function init() {
         let directionX = (Math.random() * 0.4) - 0.2; 
         let directionY = (Math.random() * 0.4) - 0.2;
         
-        // Theme colors: mostly dark, some light orange
-        let color = Math.random() > 0.85 ? '#FF9F43' : 'rgba(0, 0, 0, 0.15)';
+        // Theme colors: respond to dark mode dynamically
+        let baseColor = isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.15)';
+        let color = Math.random() > 0.85 ? '#FF9F43' : baseColor;
 
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
@@ -125,7 +145,7 @@ function connect() {
                 // Subtle connecting lines, picking up the orange if it's an orange node
                 let colorBase = particlesArray[a].color === '#FF9F43' || particlesArray[b].color === '#FF9F43' 
                     ? `rgba(255, 159, 67, ${opacityValue * 0.3})` 
-                    : `rgba(0, 0, 0, ${opacityValue * 0.08})`;
+                    : (isDarkMode ? `rgba(255, 255, 255, ${opacityValue * 0.1})` : `rgba(0, 0, 0, ${opacityValue * 0.08})`);
                 
                 ctx.strokeStyle = colorBase;
                 ctx.lineWidth = 0.5;

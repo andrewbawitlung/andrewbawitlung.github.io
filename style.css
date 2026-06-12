@@ -1,3 +1,15 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #0a0a0a;
+    --sub-text-color: #666666;
+}
+
+body.dark-mode {
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --sub-text-color: #aaaaaa;
+}
+
 /* Lock the screen, disable scrolling entirely */
 body, html {
     margin: 0;
@@ -5,9 +17,10 @@ body, html {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #ffffff; /* White minimal background */
+    background-color: var(--bg-color); /* Controlled by CSS variable */
     font-family: 'Inter', sans-serif;
-    color: #0a0a0a;
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* The Mouse-Aware Particles Background */
@@ -59,10 +72,73 @@ body, html {
     font-weight: 300;
     letter-spacing: 1.5px;
     margin-top: 15px;
-    color: #666666; /* Subdued grey */
+    color: var(--sub-text-color); /* Subdued grey */
     opacity: 0;
+    transition: color 0.5s ease;
     animation: fadeIn 2s ease-out forwards;
     animation-delay: 0.8s;
+}
+
+/* Dark Mode Toggle Switch */
+.theme-switch-wrapper {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: 1.2s;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 48px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+}
+
+input:checked + .slider {
+    background-color: #FF9F43;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 /* Subtle fade in animation */
