@@ -35,9 +35,9 @@ body, html {
 
 /* Minimalist modern typography */
 .title {
-    font-size: 4.5rem;
+    font-size: 3.2rem;
     font-weight: 200; 
-    letter-spacing: 12px; 
+    letter-spacing: 10px; 
     text-transform: uppercase;
     margin: 0;
     white-space: nowrap; 
@@ -54,10 +54,10 @@ body, html {
 .subheading {
     display: block;
     text-align: right;
-    width: calc(100% - 12px); /* Subtract the title's trailing letter-spacing to align perfectly */
-    font-size: 1.5rem;
+    width: calc(100% - 10px); /* Subtract the title's trailing letter-spacing to align perfectly */
+    font-size: 1.1rem;
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     margin-top: 15px;
     color: #666666; /* Subdued grey */
     opacity: 0;
@@ -80,8 +80,8 @@ body, html {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .title { 
-        font-size: 2rem; 
-        letter-spacing: 6px;
+        font-size: 1.6rem; 
+        letter-spacing: 5px;
         white-space: normal; 
     }
 }
