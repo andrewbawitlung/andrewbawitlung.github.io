@@ -80,12 +80,12 @@ body, html {
     animation-delay: 0.8s;
 }
 
-/* Dark Mode Toggle Switch */
+/* Dark Mode Toggle Switch (from uploaded CSS) */
 .theme-switch {
     display: inline-block;
-    height: 28px;
+    height: 24px;
     position: relative;
-    width: 60px;
+    width: 64px;
     margin-right: 12px;
 }
 
@@ -93,86 +93,39 @@ body, html {
     display: none;
 }
 
-.slider {
-    background-color: #ffffff;
-    border: 2px solid #0a0a0a;
-    bottom: 0;
+.slider-label {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #d9d9d9;
+    border-radius: 24px;
     cursor: pointer;
-    left: 0;
+    box-shadow: inset 0px 2px 5px rgba(0,0,0,0.3), inset 0px -2px 5px rgba(255,255,255,0.3);
+    transition: 0.5s;
+}
+
+.slider-label:after {
+    content: '';
     position: absolute;
-    right: 0;
-    top: 0;
-    transition: .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 6px;
-    box-sizing: border-box;
-}
-
-.slider svg {
-    width: 14px;
-    height: 14px;
-    z-index: 1;
-    transition: .4s;
-}
-
-.icon-moon {
-    stroke: #ffffff;
-    fill: #ffffff;
-    opacity: 0;
-}
-
-.icon-sun {
-    stroke: #0a0a0a;
-    opacity: 1;
-}
-
-.slider:before {
-    background-color: #0a0a0a;
-    bottom: 2px;
-    content: "";
     height: 20px;
-    left: 2px;
-    position: absolute;
-    transition: .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     width: 20px;
-    z-index: 2;
-}
-
-/* Animate while pressing */
-.slider:active:before {
-    width: 28px;
-}
-
-input:checked + .slider {
-    background-color: #333333;
-    border-color: #333333;
-}
-
-input:checked + .slider:before {
-    transform: translateX(32px);
-    background-color: #ffffff;
-}
-
-input:checked + .slider:active:before {
-    transform: translateX(24px); /* Adjusted for extra width */
-}
-
-input:checked + .slider .icon-moon {
-    opacity: 1;
-}
-
-input:checked + .slider .icon-sun {
-    opacity: 0;
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
+    background: #f2f2f2;
     border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+input:checked ~ .slider-label:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+    background: linear-gradient(180deg,#777,#3a3a3a);
+}
+
+input:checked ~ .slider-label {
+    background: #242424;
 }
 
 /* Subtle fade in animation */
