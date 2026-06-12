@@ -5,70 +5,83 @@ body, html {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #000; /* Fallback color */
+    background-color: #ffffff; /* White minimal background */
     font-family: 'Inter', sans-serif;
+    color: #0a0a0a;
 }
 
-/* LAYER 1: The Video */
-#bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 1; 
-}
-
-/* LAYER 2: The Dark Overlay */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0); /* Changed from 0.65 to 0 for full video opacity */
-    z-index: 2; 
-}
-
-/* LAYER 3: The Mouse-Aware Particles */
+/* The Mouse-Aware Particles Background */
 #particle-canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 3; 
+    z-index: 1; 
     pointer-events: none; /* Allows mouse tracking without blocking clicks */
 }
 
-/* LAYER 4: Your Name */
+/* Left-aligned Name Content */
 .content {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 4; 
-    width: 100%;
+    left: 8%;
+    transform: translateY(-50%);
+    text-align: left;
+    z-index: 2; 
+    pointer-events: none; /* Let clicks pass through if needed */
+    user-select: none;
 }
 
-/* Minimalist typography */
-h1 {
-    color: #ffffff;
-    font-size: 3.5rem;
+/* Minimalist modern typography */
+.title {
+    font-size: 4.5rem;
     font-weight: 200; 
-    letter-spacing: 8px; 
+    letter-spacing: 12px; 
     text-transform: uppercase;
     margin: 0;
     white-space: nowrap; 
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+.title .accent {
+    color: #FF9F43; /* Light orange accent */
+    font-weight: 600;
+}
+
+.subheading {
+    display: block;
+    text-align: right;
+    width: calc(100% - 12px); /* Subtract the title's trailing letter-spacing to align perfectly */
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    color: #666666; /* Subdued grey */
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+/* Subtle fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) translateX(6px); /* Compensate for letter spacing */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(6px);
+    }
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-    h1 { 
-        font-size: 1.8rem; 
-        letter-spacing: 4px;
+    .title { 
+        font-size: 2rem; 
+        letter-spacing: 6px;
         white-space: normal; 
     }
 }

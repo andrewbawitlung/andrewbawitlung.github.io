@@ -6,18 +6,11 @@ canvas.height = window.innerHeight;
 
 let particlesArray;
 
-// Your library of math equations and symbols
-const mathFormulas = [
-    '∫ f(x) dx', '∑ x_i', 'e^{iπ} + 1 = 0', 'E = mc²', 
-    '∇ × B = μ₀J', "f'(x)", 'lim_{x→0}', 'sin²θ + cos²θ = 1',
-    'α', 'β', 'γ', 'Δ', '∞', '√x', 'A = πr²', 'd/dx'
-];
-
 // Get mouse position
 let mouse = {
     x: null,
     y: null,
-    radius: 100 // Distance the mouse affects formulas
+    radius: 180 // Distance for interaction
 }
 
 window.addEventListener('mousemove', function(event) {
@@ -25,25 +18,26 @@ window.addEventListener('mousemove', function(event) {
     mouse.y = event.y;
 });
 
-// Create Particle class for text
+// Create Particle class
 class Particle {
-    constructor(x, y, directionX, directionY, size, color, text) {
+    constructor(x, y, directionX, directionY, size, color) {
         this.x = x;
         this.y = y;
         this.directionX = directionX;
         this.directionY = directionY;
-        this.size = size; // Used to scale font size
+        this.size = size;
         this.color = color;
-        this.text = text;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.density = (Math.random() * 30) + 1;
     }
 
-    // Draw text formula
+    // Draw particle
     draw() {
-        ctx.font = `${this.size * 4}px 'Inter', sans-serif`; 
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(this.text, this.x, this.y);
+        ctx.fill();
     }
 
     // Move and detect mouse collision
@@ -56,71 +50,90 @@ class Particle {
             this.directionY = -this.directionY;
         }
 
-        // Mouse collision detection (Repulsion effect)
+        // Mouse interaction (Repel effect)
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx*dx + dy*dy);
         
-        let hitBox = this.size * 5; // Approximate bounding box for text
-        
-        if (distance < mouse.radius + hitBox){
-            if (mouse.x < this.x && this.x < canvas.width - hitBox) {
-                this.x += 2;
+        let forceDirectionX = dx / distance;
+        let forceDirectionY = dy / distance;
+        let maxDistance = mouse.radius;
+        let force = (maxDistance - distance) / maxDistance;
+        let directionX = forceDirectionX * force * this.density;
+        let directionY = forceDirectionY * force * this.density;
+
+        if (distance < mouse.radius) {
+            this.x -= directionX;
+            this.y -= directionY;
+        } else {
+            if (this.x !== this.baseX) {
+                let dx = this.x - this.baseX;
+                this.x -= dx/20; // Return speed
             }
-            if (mouse.x > this.x && this.x > hitBox) {
-                this.x -= 2;
-            }
-            if (mouse.y < this.y && this.y < canvas.height - hitBox) {
-                this.y += 2;
-            }
-            if (mouse.y > this.y && this.y > hitBox) {
-                this.y -= 2;
+            if (this.y !== this.baseY) {
+                let dy = this.y - this.baseY;
+                this.y -= dy/20;
             }
         }
         
-        // Move formula
-        this.x += this.directionX;
-        this.y += this.directionY;
+        // Natural movement
+        this.baseX += this.directionX;
+        this.baseY += this.directionY;
+        
+        // Edge wrapping for base positions
+        if(this.baseX > canvas.width + 100) this.baseX = -100;
+        if(this.baseX < -100) this.baseX = canvas.width + 100;
+        if(this.baseY > canvas.height + 100) this.baseY = -100;
+        if(this.baseY < -100) this.baseY = canvas.height + 100;
+        
         this.draw();
     }
 }
 
-// Initialize formulas array
+// Initialize particles array
 function init() {
     particlesArray = [];
-    // Lowered density slightly so the screen doesn't get too cluttered with text
-    let numberOfParticles = (canvas.height * canvas.width) / 18000; 
+    // Adjust density based on screen size
+    let numberOfParticles = (canvas.height * canvas.width) / 9000; 
     
     for (let i = 0; i < numberOfParticles; i++) {
-        let size = (Math.random() * 3) + 2; // Font size scaling
-        let x = (Math.random() * ((innerWidth - size * 5) - (size * 5)) + size * 5);
-        let y = (Math.random() * ((innerHeight - size * 5) - (size * 5)) + size * 5);
-        let directionX = (Math.random() * 1) - 0.5; 
-        let directionY = (Math.random() * 1) - 0.5;
-        let color = 'rgba(255, 255, 255, 0.7)'; // 70% opacity white for the math
+        let size = (Math.random() * 2) + 0.5; // Very small dots
+        let x = (Math.random() * innerWidth);
+        let y = (Math.random() * innerHeight);
+        let directionX = (Math.random() * 0.4) - 0.2; 
+        let directionY = (Math.random() * 0.4) - 0.2;
         
-        // Pick a random formula from the array
-        let randomText = mathFormulas[Math.floor(Math.random() * mathFormulas.length)];
+        // Theme colors: mostly dark, some light orange
+        let color = Math.random() > 0.85 ? '#FF9F43' : 'rgba(0, 0, 0, 0.15)';
 
-        particlesArray.push(new Particle(x, y, directionX, directionY, size, color, randomText));
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
 }
 
-// Connect formulas close to the mouse with a faint line
+// Connect particles
 function connect() {
+    let opacityValue = 1;
     for (let a = 0; a < particlesArray.length; a++) {
-        let dx = mouse.x - particlesArray[a].x;
-        let dy = mouse.y - particlesArray[a].y;
-        let distance = Math.sqrt(dx*dx + dy*dy);
-        
-        if (distance < mouse.radius) {
-            let opacityValue = 1 - (distance/mouse.radius);
-            ctx.strokeStyle = 'rgba(255, 255, 255,' + opacityValue * 0.2 + ')'; 
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.stroke();
+        for (let b = a; b < particlesArray.length; b++) {
+            let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+            + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+            
+            // Connection distance
+            if (distance < (canvas.width/9) * (canvas.height/9)) {
+                opacityValue = 1 - (distance/15000);
+                
+                // Subtle connecting lines, picking up the orange if it's an orange node
+                let colorBase = particlesArray[a].color === '#FF9F43' || particlesArray[b].color === '#FF9F43' 
+                    ? `rgba(255, 159, 67, ${opacityValue * 0.3})` 
+                    : `rgba(0, 0, 0, ${opacityValue * 0.08})`;
+                
+                ctx.strokeStyle = colorBase;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                ctx.stroke();
+            }
         }
     }
 }
@@ -144,7 +157,7 @@ window.addEventListener('resize', function() {
     }
 );
 
-// Mouse out event to prevent formulas getting stuck
+// Mouse out event
 window.addEventListener('mouseout', function(){
         mouse.x = undefined;
         mouse.y = undefined;
