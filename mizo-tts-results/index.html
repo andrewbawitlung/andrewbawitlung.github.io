@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mizo TTS Results</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --primary-color: #3b82f6;
+            --accent-color: #60a5fa;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        .audio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .audio-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .transcript {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            font-style: italic;
+        }
+        .player-group {
+            margin-bottom: 1rem;
+        }
+        .player-group:last-child {
+            margin-bottom: 0;
+        }
+        .player-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            display: block;
+        }
+        audio {
+            width: 100%;
+            height: 40px;
+            outline: none;
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: #cbd5e1;
+        }
+        .notice {
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px solid #f59e0b;
+            color: #fbbf24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mizo TTS Results</h1>
+            <p>100% Text Match Audio Demos</p>
+        </header>
+
+        <section>
+            <h2>F5-TTS-Mizo</h2>
+            <h3>Male</h3>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"thupui atan khawvel pakhat chhungkaw pakhat"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9993.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_male_f5-male-Akashvani_9993.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"chi reng reng social media"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9988.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_male_f5-male-Akashvani_9988.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"vawiin assembly inkhawmah chuan"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9984.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_male_f5-male-Akashvani_9984.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"food corporation of india thuneituten an sawi"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_999.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_male_f5-male-Akashvani_999.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <h3>Female</h3>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"ka bei a la sei reng e ti mah ila zâninah mai pawh hian pasal neiin fapate pawh nei mah ila"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Ruthi_segmented_Chapter_1_12_partB.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_female_f5-female-Bible_Ruthi_segmented_Chapter_1_12_partB.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"he lalnu thiltih hi hmeichhia zawng zawngin an han hre darh ang a lal ahasuera chuan vasti a hmaa rawn hruai tûrin thu a pe a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_1_17_partA.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_female_f5-female-Bible_Estheri_segmented_Chapter_1_17_partA.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"tin lalnu vasti pawhin ahasuera lal inah chuan hmeichheho tân ruai a ṭheh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_1_9.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_female_f5-female-Bible_Estheri_segmented_Chapter_1_9.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"chu thil chu mordekaian a lo hria a lalnu estheri chu a hrilh a tin estheri chuan mordekaia hmingin lal a hrilh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_2_22.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_f5_female_f5-female-Bible_Estheri_segmented_Chapter_2_22.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>XTTS-V2-Mizo</h2>
+            <h3>Male</h3>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"inbuatsaihna a kal chho mek tih sawiin"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9983.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_male_xtts-male-Akashvani_9983.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"police station chuan september ni sarih"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9986.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_male_xtts-male-Akashvani_9986.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"gaza hmar lama awm zawng zawngte chu"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9996.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_male_xtts-male-Akashvani_9996.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"united nations hemi chungchang hi hrilhin"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9995.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_male_xtts-male-Akashvani_9995.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <h3>Female</h3>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"tin lalnu vasti pawhin ahasuera lal inah chuan hmeichheho tân ruai a ṭheh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_1_9.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_female_xtts-female-Bible_Estheri_segmented_Chapter_1_9.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"chu thil chu mordekaian a lo hria a lalnu estheri chu a hrilh a tin estheri chuan mordekaia hmingin lal a hrilh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_2_22.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_female_xtts-female-Bible_Estheri_segmented_Chapter_2_22.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"tin mordekaia chuan estheri a va chhântîr leh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_4_13_partA.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_female_xtts-female-Bible_Estheri_segmented_Chapter_4_13_partA.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"aw indo pak war nineteen seventy one ah maw ka lo ti deuh haw a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_LoveTheWayUR_4_segment_257.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_xtts_female_xtts-female-LoveTheWayUR_4_segment_257.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>SpeechT5-Mizo</h2>
+            <h3>Male</h3>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"thupui atan khawvel pakhat chhungkaw pakhat"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9993.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_male_speecht5-Male-Akashvani_9993.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"chi reng reng social media"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9988.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_male_speecht5-Male-Akashvani_9988.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"inbuatsaihna a kal chho mek tih sawiin"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9983.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_male_speecht5-Male-Akashvani_9983.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"vawiin assembly inkhawmah chuan"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9984.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_male_speecht5-Male-Akashvani_9984.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <h3>Female</h3>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"tin lalnu vasti pawhin ahasuera lal inah chuan hmeichheho tân ruai a ṭheh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_1_9.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_female_speecht5-Female-Bible_Estheri_segmented_Chapter_1_9.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"chu thil chu mordekaian a lo hria a lalnu estheri chu a hrilh a tin estheri chuan mordekaia hmingin lal a hrilh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_2_22.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_female_speecht5-Female-Bible_Estheri_segmented_Chapter_2_22.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"tin mordekaia chuan estheri a va chhântîr leh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_4_13_partA.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_female_speecht5-Female-Bible_Estheri_segmented_Chapter_4_13_partA.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"lalin mi chawimawi a duha chu eng tihsak nge ṭha ang le a ti a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_6_6_A_partB.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_speecht5_female_speecht5-Female-Bible_Estheri_segmented_Chapter_6_6_A_partB.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>VITS2-Mizo</h2>
+            <h3>Male</h3>
+            <div class="notice">No 100% exact matches found for VITS2-Mizo (Male). Showing 4 random predictions instead.</div>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"mizoram leh a thenawm state"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9975.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_male_vits2-male-Akashvani_9975.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"thupui atan khawvel pakhat chhungkaw pakhat"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9993.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_male_vits2-male-Akashvani_9993.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"mizoramah november ni sarihah inthlan buatsaih a nih dawn avangin"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9982.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_male_vits2-male-Akashvani_9982.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"hetiang ang kaihhnawih video emaw"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_male_Akashvani_9989.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_male_vits2-male-Akashvani_9989.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <h3>Female</h3>
+            <div class="notice">No 100% exact matches found for VITS2-Mizo (Female). Showing 4 random predictions instead.</div>
+            <div class="audio-grid">
+                <div class="card">
+                    <div class="transcript">"ka bei a la sei reng e ti mah ila zâninah mai pawh hian pasal neiin fapate pawh nei mah ila"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Ruthi_segmented_Chapter_1_12_partB.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_female_vits2-female-Bible_Ruthi_segmented_Chapter_1_12_partB.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"apiangah ka riak ang a i chite chu ka chite an ni ang a i pathian chu ka pathian a ni ang"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Ruthi_segmented_Chapter_1_16_partB.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_female_vits2-female-Bible_Ruthi_segmented_Chapter_1_16_partB.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"he lalnu thiltih hi hmeichhia zawng zawngin an han hre darh ang a lal ahasuera chuan vasti a hmaa rawn hruai tûrin thu a pe a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_1_17_partA.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_female_vits2-female-Bible_Estheri_segmented_Chapter_1_17_partA.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="transcript">"tin lalnu vasti pawhin ahasuera lal inah chuan hmeichheho tân ruai a ṭheh a"</div>
+                    <div class="player-group">
+                        <span class="player-label">Reference</span>
+                        <audio controls preload="none">
+                            <source src="audio/ref_female_Bible_Estheri_segmented_Chapter_1_9.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="player-group">
+                        <span class="player-label">Predicted</span>
+                        <audio controls preload="none">
+                            <source src="audio/pred_vits2_female_vits2-female-Bible_Estheri_segmented_Chapter_1_9.wav.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
