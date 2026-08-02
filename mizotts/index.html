@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mizo Text-to-Speech: A Comparative Evaluation of State-of-the-Art Models in a Low-Resource Setting</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        
         :root {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --card-bg: #1e293b;
-            --border-color: #334155;
-            --primary-color: #3b82f6;
-            --accent-color: #60a5fa;
+            --bg-color: #f6f3eb; /* Soft Ghibli cream */
+            --text-color: #4a4a4a; /* Soft charcoal/brown text */
+            --card-bg: #ffffff;
+            --border-color: #e2dcd0;
+            --primary-color: #6b8e23; /* Earthy green */
+            --accent-color: #79a3b1; /* Soft sky blue */
         }
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Nunito', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
+            background-image: radial-gradient(#e2dcd0 1px, transparent 1px);
+            background-size: 20px 20px;
             color: var(--text-color);
             line-height: 1.6;
             margin: 0;
@@ -36,9 +40,8 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #60a5fa, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
         h2 {
             font-size: 2rem;
@@ -66,22 +69,22 @@
         }
         .card {
             background-color: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 1.5rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(107, 142, 35, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(107, 142, 35, 0.12);
         }
         .transcript {
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            color: #e2e8f0;
-            border-left: 4px solid var(--primary-color);
+            color: #555;
+            border-left: 4px solid var(--accent-color);
             padding-left: 1rem;
             font-style: italic;
         }
@@ -106,25 +109,57 @@
             outline: none;
         }
         audio::-webkit-media-controls-panel {
-            background-color: #cbd5e1;
+            background-color: #f1ebd9;
         }
         .notice {
-            background-color: rgba(245, 158, 11, 0.1);
-            border: 1px solid #f59e0b;
-            color: #fbbf24;
+            background-color: #fff9e6;
+            border: 1px solid #f5c05c;
+            color: #b07e15;
             padding: 1rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
         }
+        .download-banner {
+            background-color: var(--card-bg);
+            border: 2px dashed var(--accent-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(121, 163, 177, 0.1);
+        }
+        .download-banner h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .download-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: background-color 0.2s;
+        }
+        .download-btn:hover {
+            background-color: #5b8796;
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Mizo Text-to-Speech: A Comparative Evaluation of State-of-the-Art Models in a Low-Resource Setting</h1>
         </header>
+
+        <div class="download-banner">
+            <h3>Dataset & Analysis Files</h3>
+            <p>All the synthesized and raw audio used for the analysis can be downloaded here.</p>
+            <a href="https://github.com/andrewbawitlung/andrewbawitlung.github.io/releases/download/mizotts-analysis/MizoTTS-Analysis.rar" class="download-btn">Download MizoTTS-Analysis.rar (1.86 GB)</a>
+        </div>
 
         <section>
             <h2>F5-TTS-Mizo</h2>
